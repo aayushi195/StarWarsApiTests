@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.restlet.dhc</groupId>
+    <artifactId>data_validation</artifactId>
+    <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.restlet.dhc</groupId>
+                <artifactId>dhc-maven-plugin</artifactId>
+                <version>1.3.4.4</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                          <file>data_validation.json</file>
+                          <licenseKey>${license_key}</licenseKey>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <pluginRepository>
+           <id>restlet-public</id>
+           <name>Restlet Public Repository</name>
+           <url>http://maven.restlet.com</url>
+       </pluginRepository>
+    </pluginRepositories>
+</project>

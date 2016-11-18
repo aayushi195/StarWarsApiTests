@@ -1,0 +1,179 @@
+{
+    "version": 3,
+    "nodes": [
+        {
+            "id": "43AF23F3-B389-44C3-B240-B2876E9D8317",
+            "lastModified": "2016-11-17T19:51:35.615+01:00",
+            "name": "Star Wars API",
+            "type": "Project"
+        },
+        {
+            "id": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69",
+            "lastModified": "2016-11-17T19:51:35.617+01:00",
+            "name": "Data validation",
+            "requestOrder": [
+                "People",
+                "Planets",
+                "Starships"
+            ],
+            "type": "Scenario",
+            "parentId": "43AF23F3-B389-44C3-B240-B2876E9D8317"
+        },
+        {
+            "id": "0B967939-BB4B-46C7-A638-711C4B593CC3",
+            "lastModified": "2016-11-17T19:51:35.618+01:00",
+            "name": "Starships",
+            "headers": [],
+            "assertions": [
+                {
+                    "path": "code",
+                    "value": "200",
+                    "comparison": "Equals",
+                    "subject": "ResponseStatus"
+                },
+                {
+                    "path": "$.name",
+                    "value": "X-wing",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.pilots",
+                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
+                    "comparison": "Contains",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.url",
+                    "value": "${\"Star Wars API\".\"Data validation\".\"Starships\".\"request\".\"uri\"}",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                }
+            ],
+            "metaInfo": {
+                "ownerId": "Local repository id"
+            },
+            "type": "Request",
+            "method": {
+                "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                "name": "GET"
+            },
+            "body": {
+                "autoSetLength": true,
+                "bodyType": "Text"
+            },
+            "headersType": "Form",
+            "uri": {
+                "host": "swapi.co",
+                "path": "/api/starships/12/",
+                "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                }
+            },
+            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
+        },
+        {
+            "id": "57EFCF06-0CFB-4887-9FB8-6876320D7D8D",
+            "lastModified": "2016-11-17T19:50:40.054+01:00",
+            "name": "People",
+            "headers": [],
+            "assertions": [
+                {
+                    "path": "code",
+                    "value": "200",
+                    "comparison": "Equals",
+                    "subject": "ResponseStatus"
+                },
+                {
+                    "path": "$.name",
+                    "value": "Luke Skywalker",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.url",
+                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                }
+            ],
+            "metaInfo": {
+                "ownerId": "Local repository id"
+            },
+            "type": "Request",
+            "method": {
+                "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                "name": "GET"
+            },
+            "body": {
+                "autoSetLength": true,
+                "bodyType": "Text"
+            },
+            "headersType": "Form",
+            "uri": {
+                "host": "swapi.co",
+                "path": "/api/people/1/",
+                "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                }
+            },
+            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
+        },
+        {
+            "id": "E05CAB0A-6045-4C55-98BE-50EC4EBFB012",
+            "lastModified": "2016-11-17T19:51:12.275+01:00",
+            "name": "Planets",
+            "headers": [],
+            "assertions": [
+                {
+                    "path": "code",
+                    "value": "200",
+                    "comparison": "Equals",
+                    "subject": "ResponseStatus"
+                },
+                {
+                    "path": "$.name",
+                    "value": "Tatooine",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.residents",
+                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
+                    "comparison": "Contains",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.url",
+                    "value": "${\"Star Wars API\".\"Data validation\".\"Planets\".\"request\".\"uri\"}",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                }
+            ],
+            "metaInfo": {
+                "ownerId": "Local repository id"
+            },
+            "type": "Request",
+            "method": {
+                "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                "name": "GET"
+            },
+            "body": {
+                "autoSetLength": true,
+                "bodyType": "Text"
+            },
+            "headersType": "Form",
+            "uri": {
+                "host": "swapi.co",
+                "path": "/api/planets/1/",
+                "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                }
+            },
+            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
+        }
+    ]
+}
