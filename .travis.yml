@@ -1,10 +1,10 @@
 language: java
 jdk:
   - oraclejdk8
-install: true #skipping default install step
+install: true # skipping default install step
 cache:
   directories:
-    - $HOME/.m2 #caching maven dependencies to speed up the build
+    - $HOME/.m2 # caching maven dependencies to speed up the build
 script: 
   - mvn test -Dlicense_key=$LICENSE_KEY -B
 env:
