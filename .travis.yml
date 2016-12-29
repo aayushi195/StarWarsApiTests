@@ -1,9 +1,12 @@
 language: java
 jdk:
   - oraclejdk8
-install: true # skipping default install step
+install: true #skipping default install step
+cache:
+  directories:
+    - $HOME/.m2 #caching maven dependencies to speed up the build
 script: 
-    - mvn test -B -Dlicense_key=$LICENSE_KEY
+  - mvn test -Dlicense_key=$LICENSE_KEY -B
 env:
   global:
     - secure: "jVAZP5Dx3dq3nLIYVP34gV2RxcII6RBAciwkZm+BCfu0s9xbP0XNTLZmNVCudanA1iv/urGsu1Cj4A4rSbet2bB0x4mJBd61GWC9zNwdFBBUPCJuaGLVu/H4zhuI8G01Xawn7scSPvJRkL8ZBmlWSFbagkeKzyahFCJId5k2lc2cTGCWwLQl5deOsoK90H7OTGJiSGdFRIL4s2MNqsA066yrQLMXmcig0uHHYaEchgZ8YQBLauk1BUzK+x+q1xUniw3qzU6i/6kyBjdgi6tz/IL7g2JCrck4wEwi8yRjnwoeRH3tP2kMyAuqJdyXMH5VBHv31hawHWctoRNoBmJkzHcaMPm/bw2D/pLUdqcGX714C6NEP23mlDkbfzyVutGCvpkcF7CF5lfLQ3FgQVyunn3yIkkBGHcfVcZ222mTDTgyfdleByW8uP0Ng24/K1SpK+J5NjF1C0Te3aaxODT+5zNZRWHdVv2DYg381mdjkCrAodJhRJijFAw/btLmdtBs9u+Ooxi2AVGZ+ng4Zd8Ypi8ehGpqWvkkCcPgR7c7ZNkuvYjUsXvtPBroKTDndpPFVjbwwDcMkFTcwSGknOb03sg/VpHbcnSLNYTCD8LPNf8EdyGFebacHuvHCYRQzsodxiFrcT2NWK1Tl/66qcjkPGenJj7lz2jHNzN7Yppo7kY="
