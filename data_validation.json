@@ -1,83 +1,39 @@
 {
+    "front-version": "1.4.0.1",
     "version": 3,
     "nodes": [
         {
-            "id": "43AF23F3-B389-44C3-B240-B2876E9D8317",
-            "lastModified": "2016-11-17T19:51:35.615+01:00",
+            "id": "51F39A29-B962-4ADB-910A-634F2145A073",
+            "lastModified": "2017-01-11T15:17:05.060+01:00",
             "name": "Star Wars API",
+            "remoteModification": "2017-01-11T14:17:04.924Z",
             "type": "Project"
         },
         {
-            "id": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69",
-            "lastModified": "2016-11-17T19:51:35.617+01:00",
-            "name": "Data validation",
+            "description": "##### Data validation on Star Wars API ⭐️ \n\nEnsure data is consistent across API calls.  ",
+            "id": "A36EDDC6-D5EA-4B3F-8BBA-FF911FF9FEED",
+            "lastModified": "2016-12-29T11:39:27.819+01:00",
+            "name": "SWAPI data validation",
             "requestOrder": [
                 "People",
                 "Planets",
                 "Starships"
             ],
             "type": "Scenario",
-            "parentId": "43AF23F3-B389-44C3-B240-B2876E9D8317"
+            "parentId": "51F39A29-B962-4ADB-910A-634F2145A073"
         },
         {
-            "id": "0B967939-BB4B-46C7-A638-711C4B593CC3",
-            "lastModified": "2016-11-17T19:51:35.618+01:00",
-            "name": "Starships",
-            "headers": [],
-            "assertions": [
+            "description": "Check people data  👨🏽",
+            "id": "076BE9DF-1D81-479A-B321-681FDC1406C9",
+            "lastModified": "2017-01-06T13:38:06.717+01:00",
+            "name": "People",
+            "headers": [
                 {
-                    "path": "code",
-                    "value": "200",
-                    "comparison": "Equals",
-                    "subject": "ResponseStatus"
-                },
-                {
-                    "path": "$.name",
-                    "value": "X-wing",
-                    "comparison": "Equals",
-                    "subject": "ResponseJsonBody"
-                },
-                {
-                    "path": "$.pilots",
-                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
-                    "comparison": "Contains",
-                    "subject": "ResponseJsonBody"
-                },
-                {
-                    "path": "$.url",
-                    "value": "${\"Star Wars API\".\"Data validation\".\"Starships\".\"request\".\"uri\"}",
-                    "comparison": "Equals",
-                    "subject": "ResponseJsonBody"
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
                 }
             ],
-            "metaInfo": {
-                "ownerId": "Local repository id"
-            },
-            "type": "Request",
-            "method": {
-                "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
-                "name": "GET"
-            },
-            "body": {
-                "autoSetLength": true,
-                "bodyType": "Text"
-            },
-            "headersType": "Form",
-            "uri": {
-                "host": "swapi.co",
-                "path": "/api/starships/12/",
-                "scheme": {
-                    "name": "http",
-                    "version": "V11"
-                }
-            },
-            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
-        },
-        {
-            "id": "57EFCF06-0CFB-4887-9FB8-6876320D7D8D",
-            "lastModified": "2016-11-17T19:50:40.054+01:00",
-            "name": "People",
-            "headers": [],
             "assertions": [
                 {
                     "path": "code",
@@ -93,7 +49,7 @@
                 },
                 {
                     "path": "$.url",
-                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
+                    "value": "${\"Star Wars API\".\"SWAPI data validation\".\"People\".\"request\".\"uri\"}",
                     "comparison": "Equals",
                     "subject": "ResponseJsonBody"
                 }
@@ -114,16 +70,80 @@
             "uri": {
                 "host": "swapi.co",
                 "path": "/api/people/1/",
+                "query": {
+                    "delimiter": "&",
+                    "items": []
+                },
                 "scheme": {
                     "name": "http",
                     "version": "V11"
                 }
             },
-            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
+            "parentId": "A36EDDC6-D5EA-4B3F-8BBA-FF911FF9FEED"
         },
         {
-            "id": "E05CAB0A-6045-4C55-98BE-50EC4EBFB012",
-            "lastModified": "2016-11-17T19:51:12.275+01:00",
+            "description": "Check starships data 🚀",
+            "id": "5C96A7A5-8271-44BA-91CD-D7600908342D",
+            "lastModified": "2017-01-11T15:17:04.778+01:00",
+            "name": "Starships",
+            "headers": [],
+            "assertions": [
+                {
+                    "path": "code",
+                    "value": "200",
+                    "comparison": "Equals",
+                    "subject": "ResponseStatus"
+                },
+                {
+                    "path": "$.name",
+                    "value": "X-wing",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.pilots",
+                    "value": "${\"Star Wars API\".\"SWAPI data validation\".\"People\".\"request\".\"uri\"}",
+                    "comparison": "Contains",
+                    "subject": "ResponseJsonBody"
+                },
+                {
+                    "path": "$.url",
+                    "value": "${\"Star Wars API\".\"SWAPI data validation\".\"Starships\".\"request\".\"uri\"}",
+                    "comparison": "Equals",
+                    "subject": "ResponseJsonBody"
+                }
+            ],
+            "metaInfo": {
+                "ownerId": "Local repository id"
+            },
+            "type": "Request",
+            "method": {
+                "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                "name": "GET"
+            },
+            "body": {
+                "autoSetLength": true,
+                "bodyType": "Text"
+            },
+            "headersType": "Form",
+            "uri": {
+                "host": "swapi.co",
+                "path": "/api/starships/12/",
+                "query": {
+                    "delimiter": "&",
+                    "items": []
+                },
+                "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                }
+            },
+            "parentId": "A36EDDC6-D5EA-4B3F-8BBA-FF911FF9FEED"
+        },
+        {
+            "description": "Check planets data  🌎 ",
+            "id": "7BF4F9D6-99DA-409A-A5D8-A2CE17CEE2D6",
+            "lastModified": "2016-12-29T11:39:47.912+01:00",
             "name": "Planets",
             "headers": [],
             "assertions": [
@@ -141,13 +161,13 @@
                 },
                 {
                     "path": "$.residents",
-                    "value": "${\"Star Wars API\".\"Data validation\".\"People\".\"request\".\"uri\"}",
+                    "value": "${\"Star Wars API\".\"SWAPI data validation\".\"People\".\"response\".\"body\".\"url\"}",
                     "comparison": "Contains",
                     "subject": "ResponseJsonBody"
                 },
                 {
                     "path": "$.url",
-                    "value": "${\"Star Wars API\".\"Data validation\".\"Planets\".\"request\".\"uri\"}",
+                    "value": "${\"Star Wars API\".\"SWAPI data validation\".\"Planets\".\"request\".\"uri\"}",
                     "comparison": "Equals",
                     "subject": "ResponseJsonBody"
                 }
@@ -173,7 +193,7 @@
                     "version": "V11"
                 }
             },
-            "parentId": "6FB10C9D-8F3D-42EA-8598-BD74FE6B5A69"
+            "parentId": "A36EDDC6-D5EA-4B3F-8BBA-FF911FF9FEED"
         }
     ]
 }
