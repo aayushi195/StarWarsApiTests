@@ -5,9 +5,9 @@
     {
       "type": "Project",
       "id": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f",
-      "lastModified": "2017-10-04T15:25:24.574+02:00",
+      "lastModified": "2017-10-04T15:31:31.820+02:00",
       "name": "Star Wars API",
-      "remoteModification": "2017-10-04T13:25:24.616Z"
+      "remoteModification": "2017-10-04T13:31:31.693Z"
     },
     {
       "type": "Scenario",
@@ -652,7 +652,7 @@
       },
       "description": "* title is The Empire Strikes Back\n* director is Irvin Kershner",
       "id": "3a91defc-b2b5-4da0-8898-110ebc5592cf",
-      "lastModified": "2017-10-04T15:25:24.308+02:00",
+      "lastModified": "2017-10-04T15:31:31.387+02:00",
       "name": "The Empire Strikes Back",
       "headers": [],
       "assertions": [
@@ -672,7 +672,7 @@
           "comparison": "Equals",
           "subject": "ResponseJsonBody",
           "path": "$.director",
-          "value": "John Doe"
+          "value": "Irvin Kershner"
         },
         {
           "comparison": "Equals",
@@ -772,7 +772,7 @@
       },
       "description": "* title is Return of the Jedi\n* director is Richard Marquand",
       "id": "b79c9420-6bc3-4ae1-9af6-fe405b58c6f3",
-      "lastModified": "2017-10-04T15:25:24.308+02:00",
+      "lastModified": "2017-10-04T15:31:31.820+02:00",
       "name": "Return of the Jedi",
       "headers": [],
       "assertions": [
@@ -792,7 +792,7 @@
           "comparison": "Contains",
           "subject": "ResponseJsonBody",
           "path": "$.director",
-          "value": "John Doe"
+          "value": "Richard Marquand"
         },
         {
           "comparison": "Equals",
