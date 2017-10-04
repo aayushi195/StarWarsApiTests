@@ -15,7 +15,7 @@
                             <goal>test</goal>
                         </goals>
                         <configuration>
-                          <file>swapi-tests.json</file>
+                          <file>Star_Wars_API.json</file>
                           <licenseKey>${license_key}</licenseKey>
                         </configuration>
                     </execution>
