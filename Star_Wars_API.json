@@ -5,9 +5,9 @@
     {
       "type": "Project",
       "id": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f",
-      "lastModified": "2017-10-04T15:31:31.820+02:00",
+      "lastModified": "2017-10-04T15:35:32.575+02:00",
       "name": "Star Wars API",
-      "remoteModification": "2017-10-04T13:31:31.693Z"
+      "remoteModification": "2017-10-04T13:35:32.635Z"
     },
     {
       "type": "Scenario",
@@ -402,13 +402,14 @@
     {
       "type": "Scenario",
       "id": "f301f013-068a-45ca-8cd0-39181131ed59",
-      "lastModified": "2017-08-29T11:03:15.356+02:00",
+      "lastModified": "2017-10-04T15:34:11.215+02:00",
       "name": "Validate Luke Skywalker presence",
       "requestOrder": [
         "Get Luke",
         "Check Luke's presence in A New Hope",
         "Check Luke's presence in The Empire Strikes Back",
-        "Check Luke's presence in Return of the Jedi "
+        "Check Luke's presence in Return of the Jedi ",
+        "Check Luke's presence in The Force Awakens "
       ],
       "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
     },
@@ -437,7 +438,7 @@
         "path": "/api/films/2/"
       },
       "id": "12f7572b-2a0a-4fac-bf5f-c5e79b763565",
-      "lastModified": "2017-10-02T11:40:56.045+02:00",
+      "lastModified": "2017-10-04T15:35:31.957+02:00",
       "name": "Check Luke's presence in The Empire Strikes Back",
       "headers": [],
       "assertions": [
@@ -452,6 +453,12 @@
           "subject": "ResponseJsonBody",
           "path": "$.characters",
           "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "5"
         }
       ],
       "metaInfo": {
@@ -484,7 +491,7 @@
         "path": "/api/films/3/"
       },
       "id": "1718ac89-3dbf-4d86-826f-df8e10e3c7e5",
-      "lastModified": "2017-10-02T11:40:56.046+02:00",
+      "lastModified": "2017-10-04T15:34:51.559+02:00",
       "name": "Check Luke's presence in Return of the Jedi ",
       "headers": [],
       "assertions": [
@@ -499,6 +506,12 @@
           "subject": "ResponseJsonBody",
           "path": "$.characters",
           "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "6"
         }
       ],
       "metaInfo": {
@@ -532,7 +545,7 @@
       },
       "description": "",
       "id": "213897cc-cd92-435f-bf53-ffc1698088c5",
-      "lastModified": "2017-10-03T18:05:42.429+02:00",
+      "lastModified": "2017-10-04T15:35:31.957+02:00",
       "name": "Check Luke's presence in A New Hope",
       "headers": [],
       "assertions": [
@@ -543,16 +556,16 @@
           "value": "200"
         },
         {
-          "comparison": "Equals",
-          "subject": "ResponseJsonBody",
-          "path": "$.title",
-          "value": "A New Hope"
-        },
-        {
           "comparison": "Contains",
           "subject": "ResponseJsonBody",
           "path": "$.characters",
           "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "4"
         }
       ],
       "metaInfo": {
@@ -606,6 +619,59 @@
           "subject": "ResponseJsonBody",
           "path": "$.name",
           "value": "Luke Skywalker"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f301f013-068a-45ca-8cd0-39181131ed59"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/7/"
+      },
+      "id": "9a6ddef5-19b6-441c-b781-1f96f1af08ca",
+      "lastModified": "2017-10-04T15:34:51.559+02:00",
+      "name": "Check Luke's presence in The Force Awakens ",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.characters",
+          "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "7"
         }
       ],
       "metaInfo": {
@@ -772,7 +838,7 @@
       },
       "description": "* title is Return of the Jedi\n* director is Richard Marquand",
       "id": "b79c9420-6bc3-4ae1-9af6-fe405b58c6f3",
-      "lastModified": "2017-10-04T15:31:31.820+02:00",
+      "lastModified": "2017-10-04T15:32:11.384+02:00",
       "name": "Return of the Jedi",
       "headers": [],
       "assertions": [
@@ -805,6 +871,77 @@
         "ownerId": "google-oauth2|114895169155396127559"
       },
       "parentId": "f43d0bbe-5417-4465-ab49-fb65054cdaa1"
+    },
+    {
+      "type": "Scenario",
+      "description": "Ensure data is correct for the second trilogy.     🎬",
+      "id": "578f9f17-cb91-4363-a4ec-a2ff870d5969",
+      "lastModified": "2017-10-04T15:32:26.530+02:00",
+      "name": "Third trilogy data consistency",
+      "requestOrder": [
+        "The Phantom Menace"
+      ],
+      "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/7/"
+      },
+      "description": "* title is The Force Awakens\n* director is J. J. Abrams",
+      "id": "3135080b-94b1-4f81-94f5-63cd304ebf5e",
+      "lastModified": "2017-10-04T15:33:29.178+02:00",
+      "name": "The Phantom Menace",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "The Force Awakens"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "J. J. Abrams"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "7"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "578f9f17-cb91-4363-a4ec-a2ff870d5969"
     },
     {
       "type": "Context",
