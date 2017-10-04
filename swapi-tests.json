@@ -1,0 +1,810 @@
+{
+  "front-version": "2.10.1",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "id": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f",
+      "lastModified": "2017-10-04T11:38:59.430+02:00",
+      "name": "Star Wars API",
+      "remoteModification": "2017-10-04T09:38:59.405Z"
+    },
+    {
+      "type": "Scenario",
+      "description": "##### Data validation on Star Wars API ⭐️ \n\nEnsure data is consistent across API calls.",
+      "id": "ab993499-e893-4799-80f3-3a4ac60b43e9",
+      "lastModified": "2017-10-04T11:30:56.764+02:00",
+      "name": "Data consistency - general",
+      "requestOrder": [
+        "People",
+        "Planets",
+        "Starships"
+      ],
+      "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "multipart/form-data",
+          "items": [
+            {
+              "enabled": true,
+              "type": "Text",
+              "name": ""
+            },
+            {
+              "enabled": true,
+              "type": "File",
+              "name": ""
+            },
+            {
+              "enabled": true,
+              "type": "Text",
+              "name": ""
+            }
+          ]
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/people/1/"
+      },
+      "description": "Check people data  👨🏽",
+      "id": "4714857a-daa7-4c46-81d0-8d324fff30d5",
+      "lastModified": "2017-10-03T18:05:02.416+02:00",
+      "name": "People",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "enabled": true,
+          "path": "$.name",
+          "value": "Luke Skywalker"
+        },
+        {
+          "comparison": "LessOrEqual",
+          "subject": "ResponseBody",
+          "path": "length",
+          "value": "1024"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "ab993499-e893-4799-80f3-3a4ac60b43e9"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/planets/1/"
+      },
+      "description": "Check planets data  🌎 ",
+      "id": "664e51e5-08fc-463f-9ae4-f2f23275b1fd",
+      "lastModified": "2017-10-04T11:30:46.244+02:00",
+      "name": "Planets",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.name",
+          "value": "Tatooine"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.url",
+          "value": "${\"Star Wars API\".\"Data consistency - general\".\"Planets\".\"request\".\"uri\"}"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "ab993499-e893-4799-80f3-3a4ac60b43e9"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/starships/12/"
+      },
+      "description": "Check starships data 🚀",
+      "id": "9ed65d37-be13-414b-9952-3531448bd159",
+      "lastModified": "2017-10-04T11:30:46.244+02:00",
+      "name": "Starships",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.name",
+          "value": "X-Wing"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.url",
+          "value": "${\"Star Wars API\".\"Data consistency - general\".\"Starships\".\"request\".\"uri\"}"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "ab993499-e893-4799-80f3-3a4ac60b43e9"
+    },
+    {
+      "type": "Scenario",
+      "description": "Ensure data is correct for the first trilogy.     🎬",
+      "id": "f43d0bbe-5417-4465-ab49-fb65054cdaa1",
+      "lastModified": "2017-10-04T11:38:57.484+02:00",
+      "name": "First trilogy data consistency",
+      "requestOrder": [
+        "A New Hope",
+        "The Empire Strikes Back",
+        "Return of the Jedi"
+      ],
+      "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/1/"
+      },
+      "description": "* title is A New Hope\n* director is George Lucas",
+      "id": "a79fb0be-81bd-49e5-8f32-cd215ce569a6",
+      "lastModified": "2017-10-04T11:33:36.681+02:00",
+      "name": "A New Hope",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "A New Hope"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "George Lucas"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "4"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f43d0bbe-5417-4465-ab49-fb65054cdaa1"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/2/"
+      },
+      "description": "* title is The Empire Strikes Back\n* director is Irvin Kershner",
+      "id": "3a91defc-b2b5-4da0-8898-110ebc5592cf",
+      "lastModified": "2017-10-04T11:35:37.236+02:00",
+      "name": "The Empire Strikes Back",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "The Empire Strikes Back"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "Irvin Kershner"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "5"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f43d0bbe-5417-4465-ab49-fb65054cdaa1"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/3/"
+      },
+      "description": "* title is Return of the Jedi\n* director is Richard Marquand",
+      "id": "b79c9420-6bc3-4ae1-9af6-fe405b58c6f3",
+      "lastModified": "2017-10-04T11:35:37.236+02:00",
+      "name": "Return of the Jedi",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "Return of the Jedi"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "Richard Marquand"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "6"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f43d0bbe-5417-4465-ab49-fb65054cdaa1"
+    },
+    {
+      "type": "Scenario",
+      "description": "Ensure data is correct for the second trilogy.     🎬",
+      "id": "73955d67-dcf5-49ce-82ca-3c8d6d804a85",
+      "lastModified": "2017-10-02T11:42:16.155+02:00",
+      "name": "Second trilogy data consistency",
+      "requestOrder": [
+        "The Phantom Menace",
+        "Attack of the Clones",
+        "Revenge of the Sith"
+      ],
+      "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/4/"
+      },
+      "description": "* title is The Phantom Menace\n* director is George Lucas",
+      "id": "0c366515-4e53-4de1-9535-e5c9345a37b8",
+      "lastModified": "2017-10-02T11:40:16.043+02:00",
+      "name": "The Phantom Menace",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "The Phantom Menace"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "George Lucas"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "1"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "73955d67-dcf5-49ce-82ca-3c8d6d804a85"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/5/"
+      },
+      "description": "* title is Attack of the Clones\n* director is the same as in The Phantom Menace",
+      "id": "2c44ae2e-0acd-4db8-b2c5-ae150de27a23",
+      "lastModified": "2017-10-02T11:41:50.801+02:00",
+      "name": "Attack of the Clones",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "Attack of the Clones"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "${\"Star Wars API\".\"Second trilogy data consistency\".\"The Phantom Menace\".\"response\".\"body\".jsonPath(\"$.director\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "2"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "73955d67-dcf5-49ce-82ca-3c8d6d804a85"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/6/"
+      },
+      "description": "* title is Revenge of the Sith\n* director is the same as in The Phantom Menace",
+      "id": "ad8b9354-777e-43b8-8f84-01f861ac220f",
+      "lastModified": "2017-10-02T11:41:50.801+02:00",
+      "name": "Revenge of the Sith",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "Revenge of the Sith"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.director",
+          "value": "${\"Star Wars API\".\"Second trilogy data consistency\".\"The Phantom Menace\".\"response\".\"body\".jsonPath(\"$.director\")}"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.episode_id",
+          "value": "3"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "73955d67-dcf5-49ce-82ca-3c8d6d804a85"
+    },
+    {
+      "type": "Scenario",
+      "id": "f301f013-068a-45ca-8cd0-39181131ed59",
+      "lastModified": "2017-08-29T11:03:15.356+02:00",
+      "name": "Validate Luke Skywalker presence",
+      "requestOrder": [
+        "Get Luke",
+        "Check Luke's presence in A New Hope",
+        "Check Luke's presence in The Empire Strikes Back",
+        "Check Luke's presence in Return of the Jedi "
+      ],
+      "parentId": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/people/1/"
+      },
+      "id": "89b0f080-036c-4841-b4f1-41a822cd82d4",
+      "lastModified": "2017-10-02T11:40:16.156+02:00",
+      "name": "Get Luke",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.name",
+          "value": "Luke Skywalker"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f301f013-068a-45ca-8cd0-39181131ed59"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/1/"
+      },
+      "description": "",
+      "id": "213897cc-cd92-435f-bf53-ffc1698088c5",
+      "lastModified": "2017-10-03T18:05:42.429+02:00",
+      "name": "Check Luke's presence in A New Hope",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Equals",
+          "subject": "ResponseJsonBody",
+          "path": "$.title",
+          "value": "A New Hope"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.characters",
+          "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f301f013-068a-45ca-8cd0-39181131ed59"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/2/"
+      },
+      "id": "12f7572b-2a0a-4fac-bf5f-c5e79b763565",
+      "lastModified": "2017-10-02T11:40:56.045+02:00",
+      "name": "Check Luke's presence in The Empire Strikes Back",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.characters",
+          "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f301f013-068a-45ca-8cd0-39181131ed59"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "secure": true,
+          "name": "https",
+          "version": "V11"
+        },
+        "host": "swapi.co",
+        "path": "/api/films/3/"
+      },
+      "id": "1718ac89-3dbf-4d86-826f-df8e10e3c7e5",
+      "lastModified": "2017-10-02T11:40:56.046+02:00",
+      "name": "Check Luke's presence in Return of the Jedi ",
+      "headers": [],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "path": "code",
+          "value": "200"
+        },
+        {
+          "comparison": "Contains",
+          "subject": "ResponseJsonBody",
+          "path": "$.characters",
+          "value": "${\"Star Wars API\".\"Validate Luke Skywalker presence\".\"Get Luke\".\"response\".\"body\".jsonPath(\"$.url\")}"
+        }
+      ],
+      "metaInfo": {
+        "ownerId": "google-oauth2|114895169155396127559"
+      },
+      "parentId": "f301f013-068a-45ca-8cd0-39181131ed59"
+    }
+  ]
+}
