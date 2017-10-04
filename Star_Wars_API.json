@@ -5,9 +5,9 @@
     {
       "type": "Project",
       "id": "b5be4b52-6133-40ee-ab78-57e6c2ff9f4f",
-      "lastModified": "2017-10-04T15:37:10.675+02:00",
+      "lastModified": "2017-10-04T15:38:13.292+02:00",
       "name": "Star Wars API",
-      "remoteModification": "2017-10-04T13:35:32.635Z"
+      "remoteModification": "2017-10-04T13:38:13.354Z"
     },
     {
       "type": "Scenario",
@@ -48,7 +48,7 @@
       },
       "description": "* title is The Phantom Menace\n* director is George Lucas",
       "id": "0c366515-4e53-4de1-9535-e5c9345a37b8",
-      "lastModified": "2017-10-04T15:37:10.675+02:00",
+      "lastModified": "2017-10-04T15:38:12.682+02:00",
       "name": "The Phantom Menace",
       "headers": [],
       "assertions": [
@@ -68,7 +68,7 @@
           "comparison": "Equals",
           "subject": "ResponseJsonBody",
           "path": "$.director",
-          "value": "Gniiiii"
+          "value": "George Lucas"
         },
         {
           "comparison": "Equals",
